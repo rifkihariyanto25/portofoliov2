@@ -2,6 +2,8 @@
 
 Portfolio website yang dikonversi dari HTML/CSS/JavaScript ke React dengan TypeScript dan Tailwind CSS.
 
+🎨 Menggunakan komponen Lanyard sederhana dengan CSS untuk performa optimal.
+
 ## 🚀 Fitur
 
 - **React 18** dengan TypeScript
