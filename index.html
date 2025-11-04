@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifki Aditya Hariyanto - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0a0e27',
+                        'secondary-dark': '#121530',
+                        'accent-purple': '#a855f7',
+                        'accent-blue': '#3b82f6',
+                        'accent-cyan': '#06b6d4',
+                        'text-gray': '#94a3b8',
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #3b82f6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: #121530;
+            border-radius: 1rem;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #a855f7, #3b82f6, #06b6d4);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        
+        .gradient-border:hover::before {
+            opacity: 1;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            mix-blend-mode: screen;
+            animation: blob 7s infinite;
+            opacity: 0.3;
+        }
+        
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .blob-purple {
+            background: #a855f7;
+            top: 10%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            animation-delay: 0s;
+        }
+        
+        .blob-blue {
+            background: #3b82f6;
+            top: 50%;
+            right: 10%;
+            width: 350px;
+            height: 350px;
+            animation-delay: 2s;
+        }
+        
+        .blob-cyan {
+            background: #06b6d4;
+            bottom: 10%;
+            left: 50%;
+            width: 280px;
+            height: 280px;
+            animation-delay: 4s;
+        }
+        
+        .glass {
+            background: rgba(18, 21, 48, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+        
+        .skill-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover .skill-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #a855f7, #3b82f6);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .project-card:hover::before {
+            left: 100%;
+        }
+        
+        .timeline-dot {
+            position: relative;
+        }
+        
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid #a855f7;
+            opacity: 0;
+            animation: pulse-ring 2s infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #a855f7, #3b82f6);
+            color: white;
+            border-color: transparent;
+        }
+        
+        .social-icon {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #a855f7, #3b82f6);
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 50%;
+        }
+        
+        .social-icon:hover::before {
+            opacity: 0.2;
+        }
+        
+        .mesh-gradient {
+            background: 
+                radial-gradient(at 27% 37%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 97% 21%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 52% 99%, rgba(6, 182, 212, 0.15) 0px, transparent 50%),
+                radial-gradient(at 10% 29%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 97% 96%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 33% 50%, rgba(6, 182, 212, 0.15) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-primary-dark text-slate-200 overflow-x-hidden">
+    <!-- Animated Background Blobs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="blob blob-purple"></div>
+        <div class="blob blob-blue"></div>
+        <div class="blob blob-cyan"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full glass z-50 transition-all duration-300 px-6 sm:px-8 lg:px-24">
+    <div class="flex justify-between items-center h-20">
+        <!-- Logo with Glow Effect -->
+        <div class="logo gradient-text font-bold text-2xl tracking-wider cursor-pointer hover-logo">RAH</div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn text-white text-xl md:hidden focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- Desktop Navigation Links -->
+        <div id="nav-links" class="hidden md:flex items-center space-x-10">
+            <a href="#home" class="nav-link text-text-gray hover:text-white transition duration-300 py-2 font-medium">Home</a>
+            <a href="#project" class="nav-link text-text-gray hover:text-white transition duration-300 py-2 font-medium">Projects</a>
+            <a href="#experience" class="nav-link text-text-gray hover:text-white transition duration-300 py-2 font-medium">Experience</a>
+            <a href="#skill" class="nav-link text-text-gray hover:text-white transition duration-300 py-2 font-medium">Skills</a>
+            <a href="#kontak" class="cta-btn px-7 py-3 rounded-full bg-gradient-to-r from-accent-purple to-accent-blue text-white font-semibold hover:shadow-xl hover:shadow-accent-purple/50 transition-all duration-300">
+                Contact Me
+            </a>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden hidden flex-col space-y-3 pb-6 px-4">
+        <a href="#home" class="text-text-gray hover:text-white transition duration-300 block py-2">Home</a>
+        <a href="#project" class="text-text-gray hover:text-white transition duration-300 block py-2">Projects</a>
+        <a href="#experience" class="text-text-gray hover:text-white transition duration-300 block py-2">Experience</a>
+        <a href="#skill" class="text-text-gray hover:text-white transition duration-300 block py-2">Skills</a>
+        <a href="#kontak" class="cta-btn px-7 py-3 rounded-full bg-gradient-to-r from-accent-purple to-accent-blue text-white font-semibold inline-block mt-2">
+            Contact Me
+        </a>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-32 pb-20 flex items-center relative px-4 sm:px-8 lg:px-20 mesh-gradient" id="home">
+        <div class="container mx-auto">
+            <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-16">
+                <div class="lg:w-1/2 text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
+                    <p class="text-accent-purple font-medium mb-4 text-sm tracking-wider uppercase">Hi, my name is</p>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                        <span class="text-white">Rifki Aditya</span><br>
+                        <span class="gradient-text">Hariyanto</span>
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-text-gray mb-6">
+                        <span class="typing"></span>
+                    </h2>
+                    
+                    <p class="text-lg text-text-gray leading-relaxed max-w-2xl mb-10 mx-auto lg:mx-0">
+                        Passionate Informatics student at <span class="text-accent-cyan font-medium">Telkom University Purwokerto</span>, specializing in <span class="font-medium text-white">UI/UX Design</span>, <span class="font-medium text-white">Backend Development</span>, and Technical Documentation. Experienced in building robust backend systems with Laravel.
+                    </p>
+
+                    <div class="flex justify-center lg:justify-start gap-4 mb-10">
+                        <a href="#project" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-accent-purple to-accent-blue text-white font-medium hover:shadow-xl hover:shadow-accent-purple/50 transition duration-300 transform hover:scale-105">
+                            View Projects
+                        </a>
+                        <a href="#kontak" class="px-8 py-3.5 rounded-full border-2 border-accent-purple text-white font-medium hover:bg-accent-purple/10 transition duration-300">
+                            Get in Touch
+                        </a>
+                    </div>
+
+                    <div class="flex justify-center lg:justify-start gap-5">
+                        <a href="https://github.com/rifkihariyanto25" class="social-icon w-12 h-12 flex items-center justify-center border-2 border-accent-purple/50 text-accent-purple rounded-full hover:border-accent-purple transition duration-300 relative z-10">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rifki-aditya-hariyanto-2662821a7/" class="social-icon w-12 h-12 flex items-center justify-center border-2 border-accent-blue/50 text-accent-blue rounded-full hover:border-accent-blue transition duration-300 relative z-10">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@rifkiadityahariyanto6958" class="social-icon w-12 h-12 flex items-center justify-center border-2 border-red-500/50 text-red-500 rounded-full hover:border-red-500 transition duration-300 relative z-10">
+                            <i class="fab fa-youtube text-lg"></i>
+                        </a>
+                        <a href="#" class="social-icon w-12 h-12 flex items-center justify-center border-2 border-accent-cyan/50 text-accent-cyan rounded-full hover:border-accent-cyan transition duration-300 relative z-10">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:w-5/12 relative" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto">
+                        <div class="absolute inset-0 bg-gradient-to-r from-accent-purple via-accent-blue to-accent-cyan rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white/10 shadow-2xl">
+                            <img src="Rifki Aditya Hariyanto_Foto.jpg" alt="Profile Picture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-accent-purple to-accent-blue rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-xl rotate-12 transform hover:rotate-0 transition duration-300">
+                            <div class="text-center">
+                                <div class="text-2xl">3+</div>
+                                <div class="text-xs">Years</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+   <section class="py-24 px-4 sm:px-8 lg:px-20 relative" id="project">
+    <div class="container mx-auto">
+        <div class="text-center mb-16">
+            <p class="text-accent-purple font-medium mb-2 text-sm tracking-wider uppercase" data-aos="fade-up">Portfolio</p>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4" data-aos="fade-up" data-aos-delay="100">
+                <span class="gradient-text">Featured Projects</span>
+            </h2>
+            <p class="text-text-gray max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">
+                Koleksi karya saya yang mencakup pengembangan backend, desain UI/UX, implementasi IoT, dan dokumentasi teknis.
+            </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-16" data-aos="fade-up" data-aos-delay="300">
+            <button data-filter="all" class="filter-btn px-6 py-2.5 rounded-full border-2 border-accent-purple/30 text-text-gray font-medium transition duration-300 active">Semua Proyek</button>
+            <button data-filter="backend" class="filter-btn px-6 py-2.5 rounded-full border-2 border-accent-purple/30 text-text-gray font-medium transition duration-300">Backend</button>
+            <button data-filter="uiux" class="filter-btn px-6 py-2.5 rounded-full border-2 border-accent-purple/30 text-text-gray font-medium transition duration-300">UI/UX</button>
+            <button data-filter="iot_docs_ml" class="filter-btn px-6 py-2.5 rounded-full border-2 border-accent-purple/30 text-text-gray font-medium transition duration-300">IoT/Docs/ML</button>
+        </div>
+
+        <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="project-card project-item backend all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="100">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-purple/20 to-accent-blue/20 flex items-center justify-center">
+                            <i class="fas fa-car text-accent-purple text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">April 2025</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Website & App Sewa Mobil V 2.0</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Project Tim**. Memimpin tim (5 anggota) untuk proyek sewa mobil, memastikan pembagian tugas dan integrasi yang lancar.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Kepala Tim</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Task Management</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Implementasi Fitur</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card project-item backend all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="200">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-purple/20 to-accent-cyan/20 flex items-center justify-center">
+                            <i class="fas fa-vote-yea text-accent-purple text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Februari 2025</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Website E-Voting (Laravel)</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Project Mandiri**. Merancang dan mengembangkan seluruh fitur e-voting, dari registrasi, pencoblosan, hingga rekapitulasi suara.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Laravel</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Otentikasi</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Database Config</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card project-item backend all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="300">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-purple/20 flex items-center justify-center">
+                            <i class="fas fa-tools text-accent-cyan text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Desember 2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Website Layanan Sewa Mobil (Impl. PL)</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Project Mata Kuliah Implementasi Perangkat Lunak**. Ketua tim, bertanggung jawab dalam pengembangan dashboard dan pengelolaan back-end.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Ketua Tim (4 Anggota)</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Backend</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Koneksi Database</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card project-item iot_docs_ml all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="400">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 flex items-center justify-center">
+                            <i class="fas fa-chart-line text-accent-blue text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Juni 2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Jurnal Ilmiah (Kecerdasan Buatan)</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Project Mata Kuliah Kecerdasan Buatan**. Menulis jurnal tentang prediksi open posisi trading Bitcoin menggunakan Moving Average. Nilai $4.00$.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Artificial Intelligence</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Moving Average</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Dokumentasi</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card project-item backend all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="500">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-purple/20 to-accent-blue/20 flex items-center justify-center">
+                            <i class="fas fa-hospital text-accent-purple text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Juni 2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Website Pendaftaran RS Online</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Project Mata Kuliah Rekayasa Perangkat Lunak**. Ketua tim (4 anggota), bertanggung jawab pada koneksi database dan fitur CRUD.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Ketua Tim (4 Anggota)</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">CRUD</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Database Management</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card project-item iot_docs_ml all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="600">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-blue/20 flex items-center justify-center">
+                            <i class="fas fa-fire-extinguisher text-accent-cyan text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Juni 2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Implementasi IOT Peringatan Kebakaran</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Project Mata Kuliah Dasar Mikro Pengendali**. Membantu pengkodean dan implementasi sistem peringatan kebakaran menggunakan mikrokontroler.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">IoT</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Mikrokontroler</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Sistem Peringatan</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card project-item iot_docs_ml all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="700">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-purple/20 to-accent-cyan/20 flex items-center justify-center">
+                            <i class="fas fa-seedling text-accent-purple text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Februari 2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">IoT Monitoring Tanaman Stoberi (PKM)</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Proposal Program Kreativitas Mahasiswa Karsa Cipta**. Menyusun proposal PKM dan lolos Top 150 tingkat kampus.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">IoT</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Proposal PKM</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Karsa Cipta</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card project-item uiux all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="800">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-blue/20 to-accent-cyan/20 flex items-center justify-center">
+                            <i class="fas fa-drafting-compass text-accent-blue text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Agustus 2023</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">UI/UX App "Ngangkat Mas" (Lomba)</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Project Lomba FIK FAIR**. Melakukan analisis dan perancangan UI/UX aplikasi dengan fokus pada pengalaman pengguna (user experience).
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">UI/UX Design</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">User Experience</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Analisis Desain</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card project-item uiux all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="900">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 flex items-center justify-center">
+                            <i class="fas fa-utensils text-accent-blue text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Juli 2023</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">UI/UX App Catering UMKM</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Project Mata Kuliah Interaksi Manusia Komputer**. Melakukan analisis terkait penggunaan aplikasi dan menghasilkan desain navigasi sederhana. Nilai $4.00$.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">User Analysis</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Simple Navigation</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card project-item iot_docs_ml uiux all gradient-border hover-lift" data-aos="fade-up" data-aos-delay="1000">
+                <div class="p-8 relative z-10 h-full flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-purple/20 flex items-center justify-center">
+                            <i class="fas fa-camera-retro text-accent-cyan text-2xl"></i>
+                        </div>
+                        <span class="text-xs text-text-gray mt-1">Maret 2022</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Website 360 Virtual Tour SMK</h3>
+                    <p class="text-text-gray mb-6 flex-grow leading-relaxed">
+                        **Tugas Akhir Syarat Kelulusan**. Ketua tim, mengoordinasikan perencanaan, bertanggung jawab pada desain UI/UX, dan fotografi $360^{\circ}$.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Tugas Akhir</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">UI/UX Design</span>
+                        <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Fotografi $360^{\circ}$</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-16" data-aos="fade-up">
+            <a href="#" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-accent-purple to-accent-blue text-white font-medium hover:shadow-xl hover:shadow-accent-purple/50 transition duration-300 transform hover:scale-105">
+                View All Projects
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+    
+    <!-- Experience Section -->
+    <section class="py-24 px-4 sm:px-8 lg:px-20 bg-secondary-dark/50 relative overflow-hidden" id="experience">
+    <div class="absolute inset-0 mesh-gradient opacity-50"></div>
+    <div class="container mx-auto max-w-5xl relative z-10">
+        <div class="text-center mb-20">
+            <p class="text-accent-purple font-medium mb-2 text-sm tracking-wider uppercase" data-aos="fade-up">Career Journey</p>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4" data-aos="fade-up" data-aos-delay="100">
+                <span class="gradient-text">Professional Experience</span>
+            </h2>
+            <p class="text-text-gray max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">
+                A timeline of roles and contributions showcasing growth in software development and systems analysis.
+            </p>
+        </div>
+
+        <div class="relative" data-aos="fade-up" data-aos-delay="300">
+            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-accent-purple via-accent-blue to-accent-cyan"></div>
+
+            <div class="space-y-16">
+
+                <!-- NOCOLA IoT SOLUTION -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2 md:pr-12" data-aos="fade-right" data-aos-delay="400">
+                        <div class="gradient-border p-8 hover-lift">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-3 py-1 rounded-full bg-accent-cyan/20 text-accent-cyan text-xs font-medium">Dec 2020 - May 2021 · 6 mos</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Junior Programmer</h3>
+                            <p class="text-accent-purple font-medium mb-2">PT. NOCOLA IoT SOLUTION · Internship</p>
+                            <p class="text-text-gray text-sm mb-4">Cilacap, Central Java, Indonesia · On-site</p>
+                            <ul class="space-y-2 text-text-gray">
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check-circle text-accent-cyan mt-1 flex-shrink-0"></i>
+                                    <span>Assisted in creating a company product profile website using WordPress, focusing on designing a user-friendly interface and ensuring smooth navigation</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check-circle text-accent-cyan mt-1 flex-shrink-0"></i>
+                                    <span>Wordpress Development, Web Development and +2 skills</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex w-8 h-8 rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple border-4 border-primary-dark shadow-lg shadow-accent-cyan/50 timeline-dot flex-shrink-0"></div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+
+                <!-- Dinas Kominfo Kota Semarang -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="hidden md:block md:w-1/2"></div>
+                    <div class="hidden md:flex w-8 h-8 rounded-full bg-gradient-to-r from-accent-blue to-accent-cyan border-4 border-primary-dark shadow-lg shadow-accent-blue/50 timeline-dot flex-shrink-0"></div>
+                    <div class="w-full md:w-1/2 md:pl-12" data-aos="fade-left" data-aos-delay="500">
+                        <div class="gradient-border p-8 hover-lift">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-3 py-1 rounded-full bg-accent-blue/20 text-accent-blue text-xs font-medium">Jul 2025 - Present · 4 mos</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Web Developer</h3>
+                            <p class="text-accent-cyan font-medium mb-2">Dinas Kominfo Kota Semarang · Internship</p>
+                            <p class="text-text-gray text-sm mb-4">Semarang, Central Java, Indonesia · On-site</p>
+                            <ul class="space-y-2 text-text-gray">
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check-circle text-accent-blue mt-1 flex-shrink-0"></i>
+                                    <span>Project Management, Web Development and +1 skill</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cazh -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2 md:pr-12" data-aos="fade-right" data-aos-delay="600">
+                        <div class="gradient-border p-8 hover-lift">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="px-3 py-1 rounded-full bg-accent-purple/20 text-accent-purple text-xs font-medium">Jul 2025 - Present · 4 mos</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Web Developer</h3>
+                            <p class="text-accent-blue font-medium mb-2">Cazh · Internship</p>
+                            <p class="text-text-gray text-sm mb-4">Banyumas, Central Java, Indonesia · Remote</p>
+                            <ul class="space-y-2 text-text-gray">
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check-circle text-accent-purple mt-1 flex-shrink-0"></i>
+                                    <span>Visual Web Developer, PHP and +2 skills</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex w-8 h-8 rounded-full bg-gradient-to-r from-accent-purple to-accent-blue border-4 border-primary-dark shadow-lg shadow-accent-purple/50 timeline-dot flex-shrink-0"></div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!-- Skills Section -->
+    <section class="py-24 px-4 sm:px-8 lg:px-20 relative" id="skill">
+    <div class="container mx-auto">
+        <div class="text-center mb-20">
+            <p class="text-accent-purple font-medium mb-2 text-sm tracking-wider uppercase" data-aos="fade-up">Expertise</p>
+            <h2 class="text-4xl lg:text-5xl font-bold mb-4" data-aos="fade-up" data-aos-delay="100">
+                <span class="gradient-text">Skills & Capabilities</span>
+            </h2>
+            <p class="text-text-gray max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">
+                Technical proficiencies and core competencies that drive successful project delivery.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            
+            <div class="skill-card gradient-border p-10 text-center hover-lift group" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-accent-purple/20 to-accent-blue/20 flex items-center justify-center">
+                    <i class="fas fa-laptop-code skill-icon text-accent-purple text-4xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Backend Development</h3>
+                <p class="text-text-gray leading-relaxed mb-6">
+                    Proficient in PHP (Laravel, CodeIgniter) and MySQL databases. Capable of designing RESTful APIs and management systems.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Laravel</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">PHP</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">MySQL</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">REST API</span>
+                </div>
+            </div>
+
+            <div class="skill-card gradient-border p-10 text-center hover-lift group" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-accent-blue/20 to-accent-cyan/20 flex items-center justify-center">
+                    <i class="fas fa-paint-brush skill-icon text-accent-blue text-4xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">UI/UX Design</h3>
+                <p class="text-text-gray leading-relaxed mb-6">
+                    Expert in Figma for prototyping and wireframing. Understanding of user-centered design principles for digital products.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Figma</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Wireframing</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Prototyping</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Research</span>
+                </div>
+            </div>
+
+            <div class="skill-card gradient-border p-10 text-center hover-lift group" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-accent-cyan/20 to-accent-purple/20 flex items-center justify-center">
+                    <i class="fas fa-file-alt skill-icon text-accent-cyan text-4xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Technical Documentation</h3>
+                <p class="text-text-gray leading-relaxed mb-6">
+                    Skilled in creating technical and non-technical documentation, along with analyzing system requirements.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Notion</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Swagger</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Flowcharts</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Analysis</span>
+                </div>
+            </div>
+            
+            <div class="skill-card gradient-border p-10 text-center hover-lift group" data-aos="fade-up" data-aos-delay="400">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 flex items-center justify-center">
+                    <i class="fas fa-users-cog skill-icon text-accent-blue text-4xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Project & Team Management</h3>
+                <p class="text-text-gray leading-relaxed mb-6">
+                    Proven ability as a Team Lead, ensuring efficient task division, coordination, and on-time project completion.
+                </p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Team Leadership</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-purple/10 text-accent-purple border border-accent-purple/20">Task Allocation</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">Coordination</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">Gantt Chart</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section class="py-24 px-4 sm:px-8 lg:px-20 bg-secondary-dark/50 relative overflow-hidden" id="kontak">
+        <div class="absolute inset-0 mesh-gradient opacity-50"></div>
+        <div class="container mx-auto text-center max-w-4xl relative z-10">
+            <div data-aos="fade-up">
+                <p class="text-accent-purple font-medium mb-2 text-sm tracking-wider uppercase">Get In Touch</p>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="gradient-text">Let's Work Together!</span>
+                </h2>
+                <p class="text-lg text-text-gray mb-12 leading-relaxed max-w-2xl mx-auto">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's connect and create something amazing together!
+                </p>
+                <a href="mailto:info@domain.com" class="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-gradient-to-r from-accent-purple to-accent-blue text-white font-semibold text-lg hover:shadow-2xl hover:shadow-accent-purple/50 transition duration-300 transform hover:scale-105 mb-16">
+                    <i class="fas fa-envelope"></i>
+                    Send Me an Email
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+                <div class="gradient-border p-8 hover-lift" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-accent-purple/20 to-accent-blue/20 flex items-center justify-center">
+                        <i class="fas fa-envelope text-accent-purple text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Email</h3>
+                    <p class="text-text-gray">hariyantorifki25@gmail.com</p>
+                </div>
+
+                <div class="gradient-border p-8 hover-lift" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-accent-blue/20 to-accent-cyan/20 flex items-center justify-center">
+                        <i class="fas fa-phone-alt text-accent-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Phone</h3>
+                    <p class="text-text-gray">+62 81391740311</p>
+                </div>
+
+                <div class="gradient-border p-8 hover-lift" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-accent-cyan/20 to-accent-purple/20 flex items-center justify-center">
+                        <i class="fas fa-map-marker-alt text-accent-cyan text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Location</h3>
+                    <p class="text-text-gray">Purwokerto, Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 px-4 sm:px-8 lg:px-20 border-t border-white/5">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <div class="logo gradient-text font-bold text-2xl tracking-wider mb-2">RAH</div>
+                    <p class="text-sm text-text-gray">Built with passion and <span class="text-accent-purple">Tailwind CSS</span></p>
+                </div>
+                
+                <div class="flex gap-5">
+                    <a href="https://github.com/rifkihariyanto25" class="social-icon w-10 h-10 flex items-center justify-center border-2 border-accent-purple/30 text-accent-purple rounded-full hover:border-accent-purple hover:bg-accent-purple/10 transition duration-300 relative z-10">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rifki-aditya-hariyanto-2662821a7/" class="social-icon w-10 h-10 flex items-center justify-center border-2 border-accent-blue/30 text-accent-blue rounded-full hover:border-accent-blue hover:bg-accent-blue/10 transition duration-300 relative z-10">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@rifkiadityahariyanto6958" class="social-icon w-10 h-10 flex items-center justify-center border-2 border-red-500/30 text-red-500 rounded-full hover:border-red-500 hover:bg-red-500/10 transition duration-300 relative z-10">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-icon w-10 h-10 flex items-center justify-center border-2 border-accent-cyan/30 text-accent-cyan rounded-full hover:border-accent-cyan hover:bg-accent-cyan/10 transition duration-300 relative z-10">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-white/5 text-center">
+                <p class="text-sm text-text-gray">
+                    &copy; 2024 Rifki Aditya Hariyanto. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 1000,
+            easing: 'ease-out-cubic'
+        });
+
+        new Typed(".typing", {
+            strings: ["Backend Developer", "UI/UX Designer", "Tech Enthusiast"],
+            typeSpeed: 80,
+            backSpeed: 50,
+            loop: true
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-2xl');
+            } else {
+                nav.classList.remove('shadow-2xl');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a, #nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                projectItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        projectItems.forEach(item => {
+            item.style.transition = 'opacity 0.3s, transform 0.3s';
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
